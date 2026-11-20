@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
-import type { PlayerColor } from '../lib/types'
-import { COLOR_HEX } from '../lib/gameEngine'
+import type { PlayerColor } from '../../lib/types'
+import { COLOR_HEX } from '../../lib/gameEngine'
 
 interface Pawn3DProps {
   color: PlayerColor

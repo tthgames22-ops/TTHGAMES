@@ -7,7 +7,6 @@ interface DiceProps {
   rolling: boolean
   onRoll: () => void
   disabled: boolean
-  color?: string
 }
 
 const DICE_FACES: Record<number, number[]> = {

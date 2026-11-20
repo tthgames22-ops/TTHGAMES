@@ -9,12 +9,10 @@ import {
   movePawn,
   getMovablePawns,
   aiChoosePawn,
-  COLORS,
   COLOR_HEX,
-  type
 } from '../../lib/gameEngine'
-import type { GameState, Player, PlayerColor, PlayerType, GameRoom } from '../../lib/types'
-import { playDiceRoll, playMove, playCapture, playWin, playHome, playClick } from '../../lib/sound'
+import type { GameState, PlayerColor, PlayerType, GameRoom } from '../../lib/types'
+import { playMove, playCapture, playWin, playHome, playClick } from '../../lib/sound'
 import Board from './Board'
 import Dice from './Dice'
 
@@ -146,13 +144,6 @@ export default function GameScreen({ mode, players: playerConfigs, room, userId,
   // Online: subscribe to room state changes
   useEffect(() => {
     if (mode !== 'online' || !room) return
-
-    const channel = (window as any).__supabase?.channel(`game:${room.id}`)
-    // For online mode, we'd sync state through the room
-    // This is simplified for the rebuild
-    return () => {
-      // cleanup
-    }
   }, [mode, room])
 
   const handlePlayAgain = () => {
@@ -226,7 +217,6 @@ export default function GameScreen({ mode, players: playerConfigs, room, userId,
           rolling={rolling}
           onRoll={handleRoll}
           disabled={!isMyTurn || !state.canRoll || state.winner !== null}
-          color={COLOR_HEX[currentPlayer?.color ?? 'red']}
         />
 
         {movablePawns.length > 0 && isMyTurn && !state.winner && (

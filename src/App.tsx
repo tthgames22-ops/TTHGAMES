@@ -126,7 +126,7 @@ function AppContent() {
     setView('game')
   }
 
-  const handleGameStart = (room: GameRoom, color: PlayerColor) => {
+  const handleGameStart = (room: GameRoom, _color: PlayerColor) => {
     const state = room.state as any
     const players = (state?.players || []).map((p: any) => ({
       id: p.id,
